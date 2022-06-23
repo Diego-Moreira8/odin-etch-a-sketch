@@ -20,8 +20,11 @@ function sketchAreaUpdate() {
     item.style.width = `calc(100% / ${pixelAmount.value})`;
     item.style.height = `calc(100% / ${pixelAmount.value})`;
     // ...to draw on mouse hover
-    item.addEventListener("mouseenter", () => {
-      item.style.backgroundColor = "red";
+    sketchArea.addEventListener("mousedown", () => {
+      item.addEventListener("mouseover", () => {
+        console.log("mousedown");
+        item.style.backgroundColor = "red";
+      });
     });
   });
 }
