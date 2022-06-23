@@ -24,10 +24,13 @@ function sketchAreaUpdate() {
     item.style.height = `calc(100% / ${pixelDensity.value})`;
     // ...to draw on mouse hover
     sketchArea.addEventListener("mousedown", () => {
-      item.addEventListener("mouseover", () => {
-        item.style.backgroundColor = "red";
-      });
+      item.addEventListener("mouseover", paintPixel);
     });
-    function paintPixel() {}
+    sketchArea.addEventListener("mouseup", () => {
+      item.removeEventListener("mouseover", paintPixel);
+    });
+    function paintPixel() {
+      item.style.backgroundColor = "red";
+    }
   });
 }
