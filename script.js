@@ -13,10 +13,15 @@ function sketchAreaUpdate() {
     pixel.classList.add("blank-pixel");
     sketchArea.appendChild(pixel);
   }
-  // style pixels to fit in the sketch area
+  // style pixels...
   const blankPixel = document.querySelectorAll(".blank-pixel");
   blankPixel.forEach((item) => {
+    // ...to fit in the sketch area
     item.style.width = `calc(100% / ${pixelAmount.value})`;
     item.style.height = `calc(100% / ${pixelAmount.value})`;
+    // ...to draw on mouse hover
+    item.addEventListener("mouseenter", () => {
+      item.style.backgroundColor = "red";
+    });
   });
 }

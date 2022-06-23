@@ -20,5 +20,5 @@ main {
   height: calc(100% / 16);
   box-sizing: border-box;
   background-color: white;
-  border: 1px solid black;
+  border: 0.5px solid rgb(137, 137, 137);
 }
