@@ -16,13 +16,12 @@ body {
 }
 
 h1 {
-  font-size: 3rem;
-  text-align: center;
+  font-size: 2.5rem;
   font-weight: bolder;
 }
 
 main {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   display: flex;
   justify-content: center;
   gap: 7rem;
@@ -31,28 +30,65 @@ main {
 
 .controls {
   background-color: rgb(53, 53, 53);
-  border-radius: 2.5rem;
-  padding: 3rem;
+  border-radius: 1rem;
+  padding: 3rem 3rem;
   display: flex;
   flex-flow: column;
   gap: 2rem;
 }
 
-fieldset:nth-of-type(1) {
+fieldset {
   display: flex;
   flex-flow: column;
+  margin-bottom: 2rem;
+}
+
+input[type="range"] {
+  margin-top: 0.5rem;
 }
 
 legend {
   font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+fieldset div {
+  display: flex;
+  align-items: center;
+  margin: 0.25rem 0;
+}
+
+input {
+  margin: 0 0.5rem;
+}
+
+#reset-sketch {
+  background-color: rgb(101, 0, 0);
+  border: none;
+  color: var(--light-text);
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 100ms;
+}
+
+#reset-sketch:hover {
+  background-color: rgb(147, 0, 0);
+}
+
+#reset-sketch:active {
+  background-color: rgb(81, 0, 0);
 }
 
 .sketch-area {
   background-color: rgb(53, 53, 53);
-  border-radius: 2.5rem;
-  padding: 3rem;
-  height: 60vh;
-  width: 60vh;
+  border-radius: 1rem;
+  box-shadow: 2px 2px black;
+  padding: 1rem;
+  height: 75vh;
+  width: 75vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -64,7 +100,7 @@ legend {
   height: calc(100% / 16);
   box-sizing: border-box;
   background-color: white;
-  border: 0.5px solid rgb(216, 216, 216);
+  border: 0.5px solid rgba(0, 0, 0, 0.054);
 }
 
 footer {

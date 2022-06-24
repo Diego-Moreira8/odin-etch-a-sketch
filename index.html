@@ -30,24 +30,28 @@
           </fieldset>
           <fieldset>
             <legend>Tipos de preenchimento</legend>
-
-            <input type="radio" name="color-type" id="black-color" checked />
-            <label for="black-color">Preto</label>
-
-            <input type="radio" name="color-type" id="manual-color" />
-            <label for="manual-color">Escolher cor</label>
-            <input type="color" id="color-picker" disabled />
-
-            <input type="radio" name="color-type" id="random-color" />
-            <label for="random-color">Cor aleatória</label>
+            <div>
+              <input type="radio" name="color-type" id="black-color" checked />
+              <label for="black-color">Preto</label>
+            </div>
+            <div>
+              <input type="radio" name="color-type" id="manual-color" />
+              <label for="manual-color">Escolher cor</label>
+              <input type="color" id="color-picker" disabled />
+            </div>
+            <div>
+              <input type="radio" name="color-type" id="random-color" />
+              <label for="random-color">Cor aleatória</label>
+            </div>
           </fieldset>
+          <button type="button" id="reset-sketch">Limpar</button>
         </form>
       </div>
       <div class="sketch-area"></div>
     </main>
     <footer>
       <address>
-        Construído por Diego em 2022 |
+        Construído por Diego Moreira em 2022 |
         <a href="mailto:diego.moreira529@gmail.com">E-mail</a>
         <a href="https://github.com/Diego-Moreira8" target="_blank"
           ><img src="./media/github-icon.svg" alt="GitHub icon"

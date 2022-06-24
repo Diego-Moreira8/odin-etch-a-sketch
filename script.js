@@ -3,6 +3,7 @@ const blackColor = document.querySelector("#black-color");
 const manualColor = document.querySelector("#manual-color");
 const randomColor = document.querySelector("#random-color");
 const colorPicker = document.querySelector("#color-picker");
+const resetSketch = document.querySelector("#reset-sketch");
 const sketchArea = document.querySelector(".sketch-area");
 
 let allPixels;
@@ -14,6 +15,7 @@ pixelDensity.addEventListener("change", sketchAreaUpdate);
 blackColor.addEventListener("change", paintTypeBlack);
 manualColor.addEventListener("change", paintTypeManual);
 randomColor.addEventListener("change", paintTypeRandom);
+resetSketch.addEventListener("click", reset);
 
 function sketchAreaUpdate() {
   clearSketchArea();
@@ -74,4 +76,10 @@ function generateColor() {
   let g = Math.floor(Math.random() * 205 + 51);
   let b = Math.floor(Math.random() * 205 + 51);
   return `rgb(${r}, ${g}, ${b})`;
+}
+
+function reset() {
+  allPixels.forEach((pixel) => {
+    pixel.style.backgroundColor = "white";
+  });
 }
