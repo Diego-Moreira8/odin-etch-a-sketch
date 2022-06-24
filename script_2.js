@@ -7,8 +7,6 @@ sketchAreaUpdate(); // Start the sketch area
 
 pixelDensity.addEventListener("change", sketchAreaUpdate);
 
-sketchArea.addEventListener("mousedown", selectPixel);
-
 function sketchAreaUpdate() {
   clearSketchArea();
   generatePixels();
@@ -26,29 +24,18 @@ function generatePixels() {
     sketchArea.appendChild(newPixel);
   }
   allPixels = document.querySelectorAll(".blank-pixel");
-}
-
-function definePixelSize() {
-  const blankPixel = document.querySelectorAll(".blank-pixel");
-  blankPixel.forEach((item) => {
-    // ...to fit in the sketch area
-    item.style.width = `calc(100% / ${pixelDensity.value})`;
-    item.style.height = `calc(100% / ${pixelDensity.value})`;
+  allPixels.forEach((pixel) => {
+    pixel.addEventListener("mouseover", paintPixel);
   });
 }
 
-function selectPixel() {
-  allPixels.forEach((e) => {
-    e.addEventListener("mouseenter", paintPixel);
-    e.addEventListener("mouseup", () => {
-      console.log("up");
-      e.removeEventListener("mouseenter", paintPixel);
-    });
+function definePixelSize() {
+  allPixels.forEach((pixel) => {
+    pixel.style.width = `calc(100% / ${pixelDensity.value})`;
+    pixel.style.height = `calc(100% / ${pixelDensity.value})`;
   });
 }
 
 function paintPixel(e) {
-  console.log("enter");
-  let pixel = e.target;
-  pixel.style.backgroundColor = "red";
+  e.target.style.backgroundColor = "black";
 }
