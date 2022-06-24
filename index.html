@@ -9,20 +9,25 @@
     <title>Etch-a-Sketch</title>
   </head>
   <body>
+    <header>
+      <h1>Etch-a-Sketch</h1>
+    </header>
     <main>
       <div class="controls">
         <form action="">
-          <label for="pixel-density"
-            >Densidade de pixels (2x2 até 64x64):</label
-          >
-          <input
-            id="pixel-density"
-            name="pixel-density"
-            type="range"
-            min="2"
-            max="64"
-            step="1"
-          />
+          <fieldset>
+            <label for="pixel-density"
+              >Densidade de pixels (2x2 até 64x64):</label
+            >
+            <input
+              id="pixel-density"
+              name="pixel-density"
+              type="range"
+              min="2"
+              max="64"
+              step="1"
+            />
+          </fieldset>
           <fieldset>
             <legend>Tipos de preenchimento</legend>
 
@@ -40,6 +45,20 @@
       </div>
       <div class="sketch-area"></div>
     </main>
+    <footer>
+      <address>
+        Construído por Diego em 2022 |
+        <a href="mailto:diego.moreira529@gmail.com">E-mail</a>
+        <a href="https://github.com/Diego-Moreira8" target="_blank"
+          ><img src="./media/github-icon.svg" alt="GitHub icon"
+        /></a>
+        <a
+          href="https://www.linkedin.com/in/diego-moreira-ab49471ab/"
+          target="_blank"
+          ><img src="./media/linkedin-icon.svg" alt="Linkedin icon"
+        /></a>
+      </address>
+    </footer>
     <script src="./script.js"></script>
   </body>
 </html>

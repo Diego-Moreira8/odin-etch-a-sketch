@@ -1,13 +1,58 @@
-main {
+:root {
+  --dark-background: rgb(33, 33, 33);
+  --light-text: rgb(208, 208, 208);
+}
+
+body {
   height: 100vh;
   display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 1rem;
+  background-color: var(--dark-background);
+  color: var(--light-text);
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: bolder;
+}
+
+main {
+  font-size: 1.5rem;
+  display: flex;
   justify-content: center;
+  gap: 7rem;
   align-items: center;
 }
 
+.controls {
+  background-color: rgb(53, 53, 53);
+  border-radius: 2.5rem;
+  padding: 3rem;
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+}
+
+fieldset:nth-of-type(1) {
+  display: flex;
+  flex-flow: column;
+}
+
+legend {
+  font-weight: bold;
+}
+
 .sketch-area {
-  height: 70vh;
-  width: 70vh;
+  background-color: rgb(53, 53, 53);
+  border-radius: 2.5rem;
+  padding: 3rem;
+  height: 60vh;
+  width: 60vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -20,4 +65,16 @@ main {
   box-sizing: border-box;
   background-color: white;
   border: 0.5px solid rgb(216, 216, 216);
+}
+
+footer {
+  text-align: center;
+}
+
+a {
+  color: var(--light-text);
+}
+
+a:hover {
+  color: rgb(140, 179, 251);
 }
