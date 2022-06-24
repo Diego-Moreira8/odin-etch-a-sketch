@@ -23,8 +23,19 @@
             max="64"
             step="1"
           />
-          <label for="color-picker">Escolher cor:</label>
-          <input type="color" name="color-picker" id="color-picker" />
+          <fieldset>
+            <legend>Tipos de preenchimento</legend>
+
+            <input type="radio" name="color-type" id="black-color" checked />
+            <label for="black-color">Preto</label>
+
+            <input type="radio" name="color-type" id="manual-color" />
+            <label for="manual-color">Escolher cor</label>
+            <input type="color" id="color-picker" disabled />
+
+            <input type="radio" name="color-type" id="random-color" />
+            <label for="random-color">Cor aleatória</label>
+          </fieldset>
         </form>
       </div>
       <div class="sketch-area"></div>
