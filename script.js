@@ -1,37 +1,48 @@
 const pixelDensity = document.querySelector("#pixel-density");
+const colorPicker = document.querySelector("#color-picker");
 const sketchArea = document.querySelector(".sketch-area");
+
+let allPixels;
+let currentColor = "black";
 
 sketchAreaUpdate(); // Start the sketch area
 
 pixelDensity.addEventListener("change", sketchAreaUpdate);
+colorPicker.addEventListener("change", changeColor);
 
 function sketchAreaUpdate() {
-  // removes all pixels from before
-  while (sketchArea.lastElementChild) {
-    sketchArea.removeChild(sketchArea.lastElementChild);
-  }
-  // create and draw pixels
+  clearSketchArea();
+  generatePixels();
+  definePixelSize();
+}
+
+function clearSketchArea() {
+  sketchArea.innerHTML = "";
+}
+
+function generatePixels() {
   for (let i = 0; i < pixelDensity.value ** 2; i++) {
-    const pixel = document.createElement("div");
-    pixel.classList.add("blank-pixel");
-    sketchArea.appendChild(pixel);
+    const newPixel = document.createElement("div");
+    newPixel.classList.add("blank-pixel");
+    sketchArea.appendChild(newPixel);
   }
-  // style pixels...
-  const blankPixel = document.querySelectorAll(".blank-pixel");
-  blankPixel.forEach((item) => {
-    // ...to fit in the sketch area
-    item.style.width = `calc(100% / ${pixelDensity.value})`;
-    item.style.height = `calc(100% / ${pixelDensity.value})`;
-    // ...to paint on mousedown and stop on mouse
-    sketchArea.addEventListener("mousedown", () => {
-      console.log("mousedown");
-      item.addEventListener("mouseover", paintPixel);
-    });
-    // sketchArea.addEventListener("mouseup", () => {
-    //   item.removeEventListener("mouseover", paintPixel);
-    // });
-    function paintPixel() {
-      item.style.backgroundColor = "red";
-    }
+  allPixels = document.querySelectorAll(".blank-pixel");
+  allPixels.forEach((pixel) => {
+    pixel.addEventListener("mouseover", paintPixel);
   });
+}
+
+function definePixelSize() {
+  allPixels.forEach((pixel) => {
+    pixel.style.width = `calc(100% / ${pixelDensity.value})`;
+    pixel.style.height = `calc(100% / ${pixelDensity.value})`;
+  });
+}
+
+function paintPixel(e) {
+  e.target.style.backgroundColor = currentColor;
+}
+
+function changeColor() {
+  currentColor = colorPicker.value;
 }

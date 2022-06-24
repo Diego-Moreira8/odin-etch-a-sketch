@@ -6,9 +6,8 @@ main {
 }
 
 .sketch-area {
-  background: gray;
-  height: 90vh;
-  width: 90vh;
+  height: 70vh;
+  width: 70vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -20,5 +19,5 @@ main {
   height: calc(100% / 16);
   box-sizing: border-box;
   background-color: white;
-  border: 0.5px solid rgb(137, 137, 137);
+  border: 0.5px solid rgb(216, 216, 216);
 }
