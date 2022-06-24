@@ -22,13 +22,14 @@ function sketchAreaUpdate() {
     // ...to fit in the sketch area
     item.style.width = `calc(100% / ${pixelDensity.value})`;
     item.style.height = `calc(100% / ${pixelDensity.value})`;
-    // ...to draw on mouse hover
+    // ...to paint on mousedown and stop on mouse
     sketchArea.addEventListener("mousedown", () => {
+      console.log("mousedown");
       item.addEventListener("mouseover", paintPixel);
     });
-    sketchArea.addEventListener("mouseup", () => {
-      item.removeEventListener("mouseover", paintPixel);
-    });
+    // sketchArea.addEventListener("mouseup", () => {
+    //   item.removeEventListener("mouseover", paintPixel);
+    // });
     function paintPixel() {
       item.style.backgroundColor = "red";
     }
