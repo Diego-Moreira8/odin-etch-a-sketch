@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  height: 100vh;
+  background-color: rgb(194, 0, 0);
+  font-family: sans-serif;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  color: white;
+  width: fit-content;
+}
+body h1 {
+  margin: 1rem;
+  font-family: cursive;
+}
+body #canvas {
+  background-color: white;
+  position: relative;
+  height: 100%;
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-wrap: wrap;
+}
+body #canvas .canvas-pixel {
+  user-select: none;
+}
+body #controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  width: 100%;
+}
+body #controls .button-effect {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(rgb(240, 240, 240), rgb(192, 192, 192));
+  border-radius: 50%;
+  position: relative;
+}
+body #controls .button-effect button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  border: none;
+  background-color: white;
+}
+
+/*# sourceMappingURL=styles.css.map */
