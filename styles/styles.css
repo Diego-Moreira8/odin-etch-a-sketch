@@ -51,6 +51,7 @@ body #controls .button-effect button {
   border-radius: 50%;
   border: none;
   background-color: white;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=styles.css.map */

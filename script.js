@@ -1,3 +1,12 @@
+const MODES = ["Black", "Random", "Custom"];
+let currentMode = 0;
+const changeModeBtn = document.querySelector("#change-mode");
+changeModeBtn.textContent = MODES[currentMode];
+changeModeBtn.addEventListener("click", () => {
+  currentMode = currentMode === 2 ? 0 : currentMode + 1;
+  changeModeBtn.textContent = MODES[currentMode];
+});
+
 const DEFAULT_BLACK_SHADE = 9;
 let mouseDown = false;
 let blackShade = DEFAULT_BLACK_SHADE;
@@ -28,10 +37,29 @@ function createCanvasPixels(width, height) {
   }
 }
 
+const blackPaint = () => {
+  blackShade = blackShade > 0 ? blackShade - 1 : 0;
+  return `hsl(0, 0%, ${blackShade}0%)`;
+};
+
+const randomPaint = () => {
+  const randColor = () => Math.floor(Math.random() * 255);
+  const r = randColor();
+  const g = randColor();
+  const b = randColor();
+  return `rgb(${r}, ${g}, ${b})`;
+};
+
 function paintPixel(e) {
   if (!mouseDown) return;
-  e.target.style.backgroundColor = `hsl(0, 0%, ${blackShade}0%)`;
-  blackShade = blackShade > 0 ? blackShade - 1 : 0;
+  switch (currentMode) {
+    case 0:
+      e.target.style.backgroundColor = blackPaint();
+      break;
+    case 1:
+      e.target.style.backgroundColor = randomPaint();
+      break;
+  }
 }
 
-window.onload = createCanvasPixels(12, 9);
+window.onload = createCanvasPixels(4 * 4, 3 * 4);
