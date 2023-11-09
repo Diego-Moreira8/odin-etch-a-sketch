@@ -7,6 +7,8 @@ let blackShade = DEFAULT_BLACK_SHADE;
 const MODES = ["Black", "Random", "Custom"];
 let currentMode = 0; // An index for the mode on the MODES array
 
+let customColor = "#000";
+
 // Start UI
 window.onload = createCanvasPixels(20);
 window.onmousedown = () => (isMouseDown = true);
@@ -23,10 +25,24 @@ const changeModeBtn = document.querySelector("#change-mode");
 changeModeBtn.textContent = MODES[currentMode];
 changeModeBtn.addEventListener("click", changeMode);
 
+const colorPicker = document.querySelector("#color-picker");
+colorPicker.addEventListener("change", setCurrCustomColor);
+
 // Functions
+function setCurrCustomColor(e) {
+  customColor = e.target.value;
+}
+
 function changeMode() {
   currentMode = currentMode === 2 ? 0 : currentMode + 1;
   changeModeBtn.textContent = MODES[currentMode];
+
+  const colorPickerWrap = document.querySelector(".color-picker-wrap");
+  if (currentMode === 2) {
+    colorPickerWrap.classList.add("active");
+  } else {
+    colorPickerWrap.classList.remove("active");
+  }
 }
 
 function resetCanvas() {
@@ -57,6 +73,11 @@ function paintPixel(e) {
     case 1:
       e.target.style.backgroundColor = randomPaint();
       break;
+    case 2:
+      e.target.style.backgroundColor = customColor;
+      break;
+    default:
+      console.error(`Unknown mode: ${currentMode}`);
   }
 }
 

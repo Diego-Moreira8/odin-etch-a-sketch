@@ -59,5 +59,13 @@ body {
         cursor: pointer;
       }
     }
+
+    .color-picker-wrap {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
   }
 }

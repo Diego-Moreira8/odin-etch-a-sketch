@@ -53,5 +53,11 @@ body #controls .button-effect button {
   background-color: white;
   cursor: pointer;
 }
+body #controls .color-picker-wrap {
+  display: none;
+}
+body #controls .color-picker-wrap.active {
+  display: block;
+}
 
 /*# sourceMappingURL=styles.css.map */
