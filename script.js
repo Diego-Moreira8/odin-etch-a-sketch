@@ -1,27 +1,63 @@
-const MODES = ["Black", "Random", "Custom"];
-let currentMode = 0;
-const changeModeBtn = document.querySelector("#change-mode");
-changeModeBtn.textContent = MODES[currentMode];
-changeModeBtn.addEventListener("click", () => {
-  currentMode = currentMode === 2 ? 0 : currentMode + 1;
-  changeModeBtn.textContent = MODES[currentMode];
-});
+// Globals
+let isMouseDown = false;
 
 const DEFAULT_BLACK_SHADE = 9;
-let mouseDown = false;
 let blackShade = DEFAULT_BLACK_SHADE;
-document.body.onmousedown = () => (mouseDown = true);
-document.body.onmouseup = () => {
-  mouseDown = false;
+
+const MODES = ["Black", "Random", "Custom"];
+let currentMode = 0; // An index for the mode on the MODES array
+
+// Start UI
+window.onload = createCanvasPixels(4 * 4, 3 * 4);
+window.onmousedown = () => (isMouseDown = true);
+window.onmouseup = () => {
+  isMouseDown = false;
   blackShade = DEFAULT_BLACK_SHADE;
 };
 
+// Controls
 const resetBtn = document.querySelector("#reset");
 resetBtn.addEventListener("click", resetCanvas);
 
+const changeModeBtn = document.querySelector("#change-mode");
+changeModeBtn.textContent = MODES[currentMode];
+changeModeBtn.addEventListener("click", changeMode);
+
+// Functions
+function changeMode() {
+  currentMode = currentMode === 2 ? 0 : currentMode + 1;
+  changeModeBtn.textContent = MODES[currentMode];
+}
+
 function resetCanvas() {
-  const pixels = document.querySelectorAll(".canvas-pixel");
-  pixels.forEach((p) => (p.style.backgroundColor = "#fff"));
+  document
+    .querySelectorAll(".canvas-pixel")
+    .forEach((pixel) => (pixel.style.backgroundColor = "#fff"));
+}
+
+function blackPaint() {
+  blackShade = blackShade > 0 ? blackShade - 1 : 0;
+  return `hsl(0, 0%, ${blackShade}0%)`;
+}
+
+function randomPaint() {
+  const randColor = () => Math.floor(Math.random() * 255);
+  const r = randColor();
+  const g = randColor();
+  const b = randColor();
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+function paintPixel(e) {
+  if (!isMouseDown) return;
+  switch (currentMode) {
+    case 0:
+      e.target.style.backgroundColor = blackPaint();
+      break;
+    case 1:
+      e.target.style.backgroundColor = randomPaint();
+      break;
+  }
 }
 
 function createCanvasPixels(width, height) {
@@ -36,30 +72,3 @@ function createCanvasPixels(width, height) {
     canvas.appendChild(newPixel);
   }
 }
-
-const blackPaint = () => {
-  blackShade = blackShade > 0 ? blackShade - 1 : 0;
-  return `hsl(0, 0%, ${blackShade}0%)`;
-};
-
-const randomPaint = () => {
-  const randColor = () => Math.floor(Math.random() * 255);
-  const r = randColor();
-  const g = randColor();
-  const b = randColor();
-  return `rgb(${r}, ${g}, ${b})`;
-};
-
-function paintPixel(e) {
-  if (!mouseDown) return;
-  switch (currentMode) {
-    case 0:
-      e.target.style.backgroundColor = blackPaint();
-      break;
-    case 1:
-      e.target.style.backgroundColor = randomPaint();
-      break;
-  }
-}
-
-window.onload = createCanvasPixels(4 * 4, 3 * 4);
