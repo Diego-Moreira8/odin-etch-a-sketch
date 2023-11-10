@@ -12,45 +12,53 @@ body {
   justify-content: space-between;
   background: linear-gradient(220deg, rgb(255, 255, 255), rgb(239, 239, 239));
 }
-body #content {
+body .custom-border {
+  background: linear-gradient(135deg, rgb(255, 221, 221), rgb(255, 104, 104), rgb(255, 221, 221));
   width: 100%;
   max-width: 600px;
-  margin: 0 auto;
-  background: linear-gradient(135deg, rgb(236, 0, 0), rgb(212, 0, 0));
+  margin: 1rem auto;
+  padding: 0.25rem;
   border-radius: 0.5rem;
-  margin-top: 1rem;
+  box-shadow: 0px 4px 5px 2px rgba(0, 0, 0, 0.25);
 }
-body #content h1 {
+body .custom-border #content {
+  background: linear-gradient(135deg, rgb(236, 0, 0), rgb(255, 67, 67), rgb(190, 0, 0));
+  border-radius: 0.25rem;
+}
+body .custom-border #content h1 {
   font-size: 1.5rem;
   color: rgb(235, 235, 31);
   text-align: center;
-  margin: 1rem 0 0.5rem 0;
+  margin: 0;
+  padding: 1rem 0 0.5rem 0;
 }
-body #content #canvas {
+body .custom-border #content #canvas {
   width: 80%;
   aspect-ratio: 4/3;
   display: flex;
   flex-wrap: wrap;
-  border: 2px solid black;
+  box-shadow: 0px 0px 5px 0px rgb(0, 0, 0) inset;
   margin: 0 auto;
   background-color: white;
+  padding: 5px;
 }
-body #content #canvas .canvas-pixel {
+body .custom-border #content #canvas .canvas-pixel {
   user-select: none;
 }
-body #content #controls {
+body .custom-border #content #controls {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem;
+  padding: 0.25rem;
 }
-body #content #controls .button-effect {
+body .custom-border #content #controls .button-effect {
   width: 5rem;
   height: 5rem;
   background: linear-gradient(rgb(240, 240, 240), rgb(192, 192, 192));
   border-radius: 50%;
   position: relative;
+  box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.25);
 }
-body #content #controls .button-effect button {
+body .custom-border #content #controls .button-effect button {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -65,15 +73,15 @@ body #content #controls .button-effect button {
   font-weight: 700;
   color: rgb(87, 87, 87);
 }
-body #content #controls .color-picker-wrap {
+body .custom-border #content #controls .color-picker-wrap {
   display: none;
 }
-body #content #controls .color-picker-wrap.active {
+body .custom-border #content #controls .color-picker-wrap.active {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-body #content #controls .color-picker-wrap label {
+body .custom-border #content #controls .color-picker-wrap label {
   color: white;
 }
 body footer {
