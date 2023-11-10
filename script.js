@@ -4,7 +4,7 @@ let isMouseDown = false;
 const DEFAULT_BLACK_SHADE = 9;
 let blackShade = DEFAULT_BLACK_SHADE;
 
-const MODES = ["Black", "Random", "Custom"];
+const MODES = ["PRETO", "ALEATÓRIO", "CUSTOMIZADA"];
 let currentMode = 0; // An index for the mode on the MODES array
 
 let customColor = "#000";
@@ -22,7 +22,6 @@ const resetBtn = document.querySelector("#reset");
 resetBtn.addEventListener("click", resetCanvas);
 
 const changeModeBtn = document.querySelector("#change-mode");
-changeModeBtn.textContent = MODES[currentMode];
 changeModeBtn.addEventListener("click", changeMode);
 
 const colorPicker = document.querySelector("#color-picker");
@@ -34,8 +33,10 @@ function setCurrCustomColor(e) {
 }
 
 function changeMode() {
+  const textDiv = changeModeBtn.firstElementChild;
+
   currentMode = currentMode === 2 ? 0 : currentMode + 1;
-  changeModeBtn.textContent = MODES[currentMode];
+  textDiv.textContent = MODES[currentMode];
 
   const colorPickerWrap = document.querySelector(".color-picker-wrap");
   if (currentMode === 2) {
@@ -95,3 +96,6 @@ function createCanvasPixels(density) {
     canvas.appendChild(newPixel);
   }
 }
+
+// Start the change mode button
+window.onload = changeMode();
