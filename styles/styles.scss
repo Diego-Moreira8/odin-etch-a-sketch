@@ -3,69 +3,85 @@
 }
 
 body {
-  margin: 0 auto;
-  height: 100vh;
-  background-color: rgb(194, 0, 0);
+  // border: 1px solid red;
   font-family: sans-serif;
+  margin: 0;
+  height: 100vh;
   display: flex;
   flex-flow: column;
-  align-items: center;
-  color: white;
-  width: fit-content;
+  justify-content: space-between;
 
-  h1 {
-    margin: 1rem;
-    font-family: cursive;
-  }
-
-  #canvas {
-    background-color: white;
-    position: relative;
-    height: 100%;
-    aspect-ratio: 4 / 3;
-    display: flex;
-    flex-wrap: wrap;
-
-    .canvas-pixel {
-      user-select: none;
-    }
-  }
-
-  #controls {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
+  #content {
     width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    // display: flex;
+    // flex-flow: column;
 
-    .button-effect {
-      $size: 100px;
-      width: $size;
-      height: $size;
-      background: linear-gradient(rgb(240, 240, 240), rgb(192, 192, 192));
-      border-radius: 50%;
-      position: relative;
+    h1 {
+      //font-family: cursive;
+      text-align: center;
+      margin: 1rem 0 0.5rem 0;
+    }
 
-      button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        $size: 85%;
+    #canvas {
+      width: 100%;
+      //height: 300px;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      flex-wrap: wrap;
+      border: 2px solid black;
+      background-color: white;
+
+      .canvas-pixel {
+        //border: 1px solid grey;
+        user-select: none;
+      }
+    }
+
+    #controls {
+      //border: 1px solid red;
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem;
+
+      .button-effect {
+        $size: 100px;
         width: $size;
         height: $size;
+        background: linear-gradient(rgb(240, 240, 240), rgb(192, 192, 192));
         border-radius: 50%;
-        border: none;
-        background-color: white;
-        cursor: pointer;
+        position: relative;
+
+        button {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          $size: 85%;
+          width: $size;
+          height: $size;
+          border-radius: 50%;
+          border: 3px solid white;
+          background: linear-gradient(rgb(250, 250, 250), rgb(255, 255, 255));
+          cursor: pointer;
+        }
+      }
+
+      .color-picker-wrap {
+        display: none;
+
+        &.active {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
       }
     }
+  }
 
-    .color-picker-wrap {
-      display: none;
-
-      &.active {
-        display: block;
-      }
-    }
+  footer {
+    padding: 1rem;
+    text-align: center;
   }
 }

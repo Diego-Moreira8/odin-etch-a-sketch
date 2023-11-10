@@ -10,7 +10,7 @@ let currentMode = 0; // An index for the mode on the MODES array
 let customColor = "#000";
 
 // Start UI
-window.onload = createCanvasPixels(20);
+window.onload = createCanvasPixels(50);
 window.onmousedown = () => (isMouseDown = true);
 window.onmouseup = () => {
   isMouseDown = false;
