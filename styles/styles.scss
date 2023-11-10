@@ -36,9 +36,9 @@ body {
       border-radius: 0.25rem;
 
       h1 {
-        //font-family: cursive;
+        font-family: "Courgette", cursive;
         font-size: 1.5rem;
-        color: rgb(235, 235, 31);
+        color: #e8ffc4;
         text-align: center;
         margin: 0;
         padding: 1rem 0 0.5rem 0;
@@ -122,7 +122,19 @@ body {
   }
 
   footer {
+    font-family: "Courgette", sans-serif;
     padding: 1rem;
     text-align: center;
+
+    a {
+      color: red;
+      padding: 0 0.2rem;
+      border-radius: 0.25rem;
+
+      &:hover {
+        background-color: red;
+        color: #e8ffc4;
+      }
+    }
   }
 }

@@ -26,8 +26,9 @@ body .custom-border #content {
   border-radius: 0.25rem;
 }
 body .custom-border #content h1 {
+  font-family: "Courgette", cursive;
   font-size: 1.5rem;
-  color: rgb(235, 235, 31);
+  color: #e8ffc4;
   text-align: center;
   margin: 0;
   padding: 1rem 0 0.5rem 0;
@@ -95,8 +96,18 @@ body .custom-border #content #controls .color-picker-wrap label {
   color: white;
 }
 body footer {
+  font-family: "Courgette", sans-serif;
   padding: 1rem;
   text-align: center;
+}
+body footer a {
+  color: red;
+  padding: 0 0.2rem;
+  border-radius: 0.25rem;
+}
+body footer a:hover {
+  background-color: red;
+  color: #e8ffc4;
 }
 
 /*# sourceMappingURL=styles.css.map */
