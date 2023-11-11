@@ -1,11 +1,5 @@
-The Odin Project: Etch-a-Sketch
+#Traço Mágico
 
-PT
-Projeto proposto pelo site The Odin Project.
-Link com atribuições: https://www.theodinproject.com/lessons/foundations-etch-a-sketch
-Pretendo implementar uma função de desenhar somente no mousedown, e um botão para alternar para um tema claro.
+Este é um projeto que imita o brinquedo de criação de desenhos "Etch A Sketch" (conhecido como Traço Mágico no Brasil). O projeto foi proposto pelo site [The Odin Project](https://www.theodinproject.com) para aprendizado dos fundamentos de JavaScript e manipulação do DOM. O projeto pode ser acessado no link [diego-moreira8.github.io/odin-etch-a-sketch](https://diego-moreira8.github.io/odin-etch-a-sketch).
 
-EN
-Project proposed by The Odin Project website.
-Link with attributions: https://www.theodinproject.com/lessons/foundations-etch-a-sketch
-I plan to implement a mousedown-only draw function, and a button to switch to a light theme.
+![image](./project-screenshot.png)
