@@ -54,6 +54,7 @@ body {
         margin: 0 auto;
         background-color: white;
         padding: 5px;
+        touch-action: none;
 
         .canvas-pixel {
           user-select: none;
@@ -80,6 +81,13 @@ body {
           cursor: pointer;
           transition: transform 100ms ease-in-out;
 
+          @media (max-width: 400px) {
+            $size: 4rem;
+            width: $size;
+            height: $size;
+            font-size: 0.4rem;
+          }
+
           &:active {
             transform: scale(0.9);
           }
@@ -102,10 +110,10 @@ body {
         }
 
         .color-picker-wrap {
-          //display: none;
           opacity: 0;
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 0.5rem;
           transition: opacity 200ms ease-in-out;
 
@@ -113,8 +121,14 @@ body {
             opacity: 1;
           }
 
+          @media (max-width: 500px) {
+            flex-flow: column;
+            gap: 0.25rem;
+          }
+
           label {
             color: white;
+            text-align: center;
           }
         }
       }

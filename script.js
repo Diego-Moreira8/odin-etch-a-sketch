@@ -1,35 +1,48 @@
+// Constants
+const MODES = ["PRETO", "ALEATÓRIO", "CUSTOMIZADA"]; // Black, Random, Custom
+const DEFAULT_BLACK_SHADE = 90;
+
 // Globals
 let isMouseDown = false;
-
-const DEFAULT_BLACK_SHADE = 9;
+let currentMode = 2; // An index for the mode on the MODES array
 let blackShade = DEFAULT_BLACK_SHADE;
-
-const MODES = ["PRETO", "ALEATÓRIO", "CUSTOMIZADA"];
-let currentMode = 0; // An index for the mode on the MODES array
-
 let customColor = "#000";
+let lastElement; // For getTouch function
 
-// Start UI
+// DOM elements
+const canvas = document.querySelector("#canvas");
+const changeModeBtn = document.querySelector("#change-mode");
+const colorPicker = document.querySelector("#color-picker");
+const resetBtn = document.querySelector("#reset");
+
+// Window events
 window.onload = createCanvasPixels(50);
 window.onmousedown = () => (isMouseDown = true);
 window.onmouseup = () => {
   isMouseDown = false;
   blackShade = DEFAULT_BLACK_SHADE;
 };
+window.onload = changeMode(); // Start the change mode button
 
-// Controls
-const resetBtn = document.querySelector("#reset");
-resetBtn.addEventListener("click", resetCanvas);
-
-const changeModeBtn = document.querySelector("#change-mode");
+// Event listeners
+canvas.addEventListener("touchmove", (e) => {
+  const TOUCHED_ELEMENT = getTouchedElement(e);
+  if (TOUCHED_ELEMENT) paintPixel(TOUCHED_ELEMENT);
+});
 changeModeBtn.addEventListener("click", changeMode);
-
-const colorPicker = document.querySelector("#color-picker");
-colorPicker.addEventListener("change", setCurrCustomColor);
+resetBtn.addEventListener("click", resetCanvas);
+colorPicker.addEventListener("change", (e) => (customColor = e.target.value));
 
 // Functions
-function setCurrCustomColor(e) {
-  customColor = e.target.value;
+function getTouchedElement(e) {
+  const X = e.touches[0].clientX;
+  const Y = e.touches[0].clientY;
+  const TOUCHED_ELEMENT = document.elementFromPoint(X, Y);
+
+  if (lastElement === TOUCHED_ELEMENT) return;
+
+  lastElement = TOUCHED_ELEMENT;
+  return TOUCHED_ELEMENT;
 }
 
 function changeMode() {
@@ -53,8 +66,10 @@ function resetCanvas() {
 }
 
 function blackPaint() {
-  blackShade = blackShade > 0 ? blackShade - 1 : 0;
-  return `hsl(0, 0%, ${blackShade}0%)`;
+  // Progressive darkening effect.
+  // blackShade resets when window.onmouseup is fired
+  blackShade = blackShade > 0 ? blackShade - 10 : 0;
+  return `hsl(0, 0%, ${blackShade}%)`;
 }
 
 function randomPaint() {
@@ -65,17 +80,18 @@ function randomPaint() {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-function paintPixel(e) {
-  if (!isMouseDown) return;
+function paintPixel(target) {
+  if (target.parentElement.id !== "canvas") return;
+
   switch (currentMode) {
     case 0:
-      e.target.style.backgroundColor = blackPaint();
+      target.style.backgroundColor = blackPaint();
       break;
     case 1:
-      e.target.style.backgroundColor = randomPaint();
+      target.style.backgroundColor = randomPaint();
       break;
     case 2:
-      e.target.style.backgroundColor = customColor;
+      target.style.backgroundColor = customColor;
       break;
     default:
       console.error(`Unknown mode: ${currentMode}`);
@@ -92,10 +108,11 @@ function createCanvasPixels(density) {
     newPixel.classList.add("canvas-pixel");
     newPixel.style.width = `${100 / WIDTH}%`;
     newPixel.style.height = `${100 / HEIGHT}%`;
-    newPixel.addEventListener("mouseenter", paintPixel);
+    newPixel.style.backgroundColor = "#fff";
+    newPixel.addEventListener("mouseenter", (e) => {
+      if (!isMouseDown) return;
+      paintPixel(e.target);
+    });
     canvas.appendChild(newPixel);
   }
 }
-
-// Start the change mode button
-window.onload = changeMode();
